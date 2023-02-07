@@ -1,12 +1,22 @@
-    function initPage() {
+
     var cityEl = document.getElementById("enter-city");
     var searchEl = document.getElementById("search-button");
     var clearEl = document.getElementById("clear-history");
     var nameEl = document.getElementById("city-name");
     var currentTempEl = document.getElementById("temperature");
     var currentWindEl = document.getElementById("wind-speed");
-  
     const historyEl = document.getElementById("history");
+
+
+
+    function initPage() {
+        if (localStorage.getItem("city") === null) {
+            cityEl = JSON.parse(localStorage.getItem("city"));
+            for (cityEl in historyElement ) {
+                showcities(cityEl);
+    }
+        }
+    getCurrent ("Manchester");
 }
 
     // var fivedayEl = document.getElementById("fiveday-header");
@@ -40,15 +50,23 @@
                 currentWindEl.innerHTML = "Wind Speed: " + response.data.wind.speed + " MPH";
                 
                     };
+
+
+                    // history
+                    
                 
                 // Get 5 day forecast for this city
                 let cityID = response.data.id;
                 let forecastQueryURL = "https://api.openweathermap.org/data/2.5/forecast?id=" + cityID + "&appid=" + APIKey;
-                fetch(forecastQueryURL)
-                    .then(function (response) {
-                        console.log(JSON.stringify(response));
+                method: 'GET'
+                var results = [];
+                    $(#"5day").empty();
+                    for (var i = 0; i < results.length; i+=5) {
+                    
+                    
+                    }
 
-                    });
+                  
                         
                         // add code for 5 day forecast data
 
